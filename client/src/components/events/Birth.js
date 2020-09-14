@@ -49,9 +49,7 @@ export default class Birth extends Component {
 
   render() {
     return(
-      <div class="card" >
-        <div class="card-body">
-          <h5 class="card-title">Events</h5>
+      <div >
           <p class="card-text">Birth</p>
           <div class="form-group row">
             <div class="col">
@@ -67,7 +65,7 @@ export default class Birth extends Component {
               <input type="text" id="placeOfBirth" class="form-control" required placeholder="Place Of Birth" value={this.state.placeOfBirth} onChange={this.onChangePlaceOfBirth} name='placeOfBirth' />
             </div>
           </div>
-        </div>
+
       </div>
     )
   }

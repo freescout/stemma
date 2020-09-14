@@ -1,5 +1,5 @@
 const db = require('../models');
-const { members, births } = require('../models');
+
 
 const Member = db.members;
 const Birth = db.births;
@@ -8,10 +8,10 @@ const Birth = db.births;
 exports.create = (req, res) => {
   // Validate request
   //console.log("Printing body", req.body);
-  if (!req.body.id) {
+/*   if (!req.body.id) {
     res.status(400).send({ message: "id cannot be empty" });
     return;
-  }
+  } */
 
 
 // Create a member
@@ -24,27 +24,28 @@ exports.create = (req, res) => {
       nickName: req.body.nickName, 
     },
     gender: req.body.gender,
-    events: {
+      /* events: {
       birth: req.body.birthId
 
-    }
+    }  */
   })
 console.log("Printing member", member);
 
 // Save Member in the database
   member
     .save(member)
-    .then(data => {
+     .then(data => {
       res.send(data);
-    })
+      console.log("Added memeber");
+    }) 
     .catch(err => {
       res.status(500).send({
         message:
         err.message || "Some error occured while creating the member"
       });
     });
-  //
-  const birth = new Birth({
+  
+   /* const birth = new Birth({
     id: req.body.birthId,
     date: req.body.dateOfBirth,
     place: req.body.placeOfBirth,
@@ -61,17 +62,18 @@ console.log("Printing member", member);
   })
   console.log("Printing birth", birth);
 
-  birth
+   birth
     .save(birth)
     .then(data => {
+      console.log("At birth");
       res.send(data);
-    })
+    }) 
     .catch(err => {
       res.status(500).send({
         message:
           err.message || "Some error occured while creating the birth event"
       });
-    });
+    });   */
     
 };
 
