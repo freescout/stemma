@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from 'react-bootstrap/Form'
 
 export default class IndividualBasicDetails extends Component {
   constructor(props) {
@@ -124,16 +125,21 @@ export default class IndividualBasicDetails extends Component {
                 </label>
           </div>
         </div>
-        <div class="input-group">
+{/*         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-          </div>
-          <div class="custom-file">
+          </div> */}
+{/*           <div class="custom-file">
             <input type="file" class="custom-file-input" id="inputGroupFile01"
               aria-describedby="inputGroupFileAddon01" onChange={this.onChangeFileHandler} />
             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-          </div>
-        </div>
+          </div> */}
+          <Form>
+            <Form.Group>
+              <Form.File id="exampleFormControlFile1" label="Choose file" />
+            </Form.Group>
+          </Form>
+        {/* </div> */}
       </div>
     )
   }

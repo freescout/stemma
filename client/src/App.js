@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import "./App.css";
 
-import AddIndividual from "./components/add-individual.component";
+import AddIndividual from "./components/AddIndividual";
 import Individual from "./components/individual.component";
 import IndividualsList from "./components/individuals-list.component";
 
