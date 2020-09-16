@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Birth from './Birth';
-import Death from './Death';
+import Birth from './events/Birth';
+import Death from './events/Death';
 
 export default class Events extends Component {
   constructor(props) {

@@ -36,7 +36,7 @@ console.log("Printing member", member);
     .save(member)
      .then(data => {
       res.send(data);
-      console.log("Added memeber");
+      console.log("Added memeber", data);
     }) 
     .catch(err => {
       res.status(500).send({
