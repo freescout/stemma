@@ -1,13 +1,14 @@
-const db = require('../models');
+const db = require('../models')
 
-
-const Member = db.members;
-const Birth = db.births;
+const Individual = db.individuals;
+const Events = db.events;
+const Places = db.places;
+const IndivId = "";
 
 // Create and Save a new Member
 exports.create = (req, res) => {
   // Validate request
-  //console.log("Printing body", req.body);
+  console.log("Printing body", req.body);
 /*   if (!req.body.id) {
     res.status(400).send({ message: "id cannot be empty" });
     return;
@@ -15,8 +16,7 @@ exports.create = (req, res) => {
 
 
 // Create a member
-  const member = new Member({
-    id: req.body.id,
+  const individual = new Individual({
     name: {
       firstName: req.body.firstName,
       middleName: req.body.middleName,
@@ -24,56 +24,53 @@ exports.create = (req, res) => {
       nickName: req.body.nickName, 
     },
     gender: req.body.gender,
-      /* events: {
-      birth: req.body.birthId
 
-    }  */
   })
-console.log("Printing member", member);
+
 
 // Save Member in the database
-  member
-    .save(member)
+  individual
+    .save(individual)
      .then(data => {
-      res.send(data);
-      console.log("Added memeber", data);
+      //res.send(data);
+      console.log("Added individual with id", data._id);
+      const events = new Events({
+        birth: [
+          {
+            individual: data._id,
+            date: req.body.dateOfBirth,
+            place: req.body.placeOfBirth,
+            parents: [{
+              id: req.body.father,
+              role: 'father'
+            }, {
+              id: req.body.mother,
+              role: 'mother'
+            }
+            ]
+          }
+        ]
+      })
+
+       events.save(function (err, doc) {
+         if (err) return console.error(err);
+         console.log("Event inserted succussfully!");
+       });
+
     }) 
     .catch(err => {
       res.status(500).send({
         message:
         err.message || "Some error occured while creating the member"
       });
+      return;
     });
   
-   /* const birth = new Birth({
-    id: req.body.birthId,
-    date: req.body.dateOfBirth,
-    place: req.body.placeOfBirth,
-    individual: req.body.id,
-      parents: [{
-        id: req.body.father,
-        role: 'father'
-      }, {
-          id: req.body.mother,
-          role: 'mother'
-      }
-    ]
-    
-  })
-  console.log("Printing birth", birth);
 
-   birth
-    .save(birth)
-    .then(data => {
-      console.log("At birth");
-      res.send(data);
-    }) 
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occured while creating the birth event"
-      });
-    });   */
+
+    
+
+  
     
 };
 
