@@ -17,12 +17,12 @@ export default class IndividualBasicDetails extends Component {
       middleName: '',
       lastName:'',
       nickName:'',
-      gender: ''
+      gender: 'other'
     }
   }
 
   sendGeneralDetails = () => {
-    //console.log("General Details at General Detials", this.state.firstName, this.state.middleName, this.state.lastName, this.state.nickName, this.state.gender);
+    console.log("General Details at General Detials", this.state.firstName, this.state.middleName, this.state.lastName, this.state.nickName, this.state.gender);
     this.props.basicDetails(this.state.firstName, this.state.middleName, this.state.lastName, this.state.nickName, this.state.gender);
   }
 
@@ -53,10 +53,11 @@ export default class IndividualBasicDetails extends Component {
 
 
   onChangeGenderHandler(e) {
-    //console.log("Gender Selected at basic", e.target.value);
+    
     this.setState({
       gender: e.target.value
     });
+    console.log("Gender Selected at basic", this.state.gender);
     this.sendGeneralDetails();
   }
 
@@ -91,7 +92,7 @@ export default class IndividualBasicDetails extends Component {
                 type="radio"
                 name="react-tips"
                 value="male"
-                checked={this.state.selectedGender === "male"}
+                checked={this.state.gender === "male"}
                 onChange={this.onChangeGenderHandler}
                 className="form-check-input"
               />
@@ -104,7 +105,7 @@ export default class IndividualBasicDetails extends Component {
                 type="radio"
                 name="react-tips"
                 value="female"
-                checked={this.state.selectedGender === "female"}
+                checked={this.state.gender === "female"}
                 onChange={this.onChangeGenderHandler}
                 className="form-check-input"
               />
@@ -117,7 +118,7 @@ export default class IndividualBasicDetails extends Component {
                 type="radio"
                 name="react-tips"
                 value="other"
-                checked={this.state.selectedGender === "other"}
+                checked={this.state.gender === "other"}
                 onChange={this.onChangeGenderHandler}
                 className="form-check-input"
               />
