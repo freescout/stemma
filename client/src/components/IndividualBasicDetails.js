@@ -53,7 +53,7 @@ export default class IndividualBasicDetails extends Component {
 
 
   onChangeGenderHandler(e) {
-    console.log("Gender Selected at basic", e.target.value);
+    //console.log("Gender Selected at basic", e.target.value);
     this.setState({
       gender: e.target.value
     });

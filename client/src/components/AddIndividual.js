@@ -27,6 +27,11 @@ export default class AddMember extends Component {
       nickName:"",
       selectedGender: 'other',
 
+      placeOfBirth:"",
+      dateOfBirth:"",
+      father:"",
+      mother: "",
+
 
       selectedFile: null,
       submitted: false,
@@ -45,6 +50,10 @@ export default class AddMember extends Component {
       nickName:'',
       selectedGender:'other',
       selectedFile: null,
+      dateOfBirth: '',
+      father: '',
+      mother: '',
+      placeOfBirth: '',
       submitted: false
     })
   }
@@ -60,8 +69,20 @@ export default class AddMember extends Component {
     //console.log("General Details at Add Individual", this.state.firstName, this.state.middleName, this.state.lastName, this.state.nickName, this.state.gender);
   }
 
+  getEventDetails = (...props) => {
+    this.setState({
+      dateOfBirth: props[0].dateOfBirth,
+      placeOfBirth: props[0].placeOfBirth,
+      father: props[0].father,
+      mother: props[0].mother,
+
+    })
+
+  }
+
   saveMember() {
     var fileData = null;
+    console.log("reached save member")
     if (this.state.selectedFile != null) {
       fileData = new FormData();
       fileData.append('file', this.state.selectedFile);
@@ -74,8 +95,12 @@ export default class AddMember extends Component {
       nickName: this.state.nickName,
       gender: this.state.selectedGender,
       photo: fileData,
+      dateOfBirth: this.state.dateOfBirth,
+      father: this.state.father,
+      mother: this.state.mother,
+      placeOfBirth: this.state.placeOfBirth
     };
-
+   console.log("Data at Add Indiv", data);
     MemberDataService.create(data)
       .then(response => {
         this.setState({
@@ -84,7 +109,7 @@ export default class AddMember extends Component {
 
           submitted: true
         })
-        console.log("Printing id ", response.data._id);
+        //console.log("Printing id ", response.data._id);
       })
       .catch(e => {
         console.log(e);
@@ -111,7 +136,7 @@ export default class AddMember extends Component {
                       <BasicDetails basicDetails={this.getBasicDetails} />
                     </Tab>
                     <Tab eventKey="events" title="Events">
-                      <Events />
+                      <Events eventDetails={this.getEventDetails} />
                     </Tab>
                     <Tab eventKey="contact" title="Contact" >
                       <Contact />

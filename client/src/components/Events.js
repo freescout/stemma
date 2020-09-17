@@ -9,6 +9,7 @@ export default class Events extends Component {
 
     this.getBirthDetails = this.getBirthDetails.bind(this);
     this.getDeathDetails = this.getDeathDetails.bind(this);
+    this.sendEventDetails = this.sendEventDetails.bind(this);
 
     this.state = {
 
@@ -16,7 +17,15 @@ export default class Events extends Component {
       father: "",
       mother: "",
       placeOfBirth: "",
+      dateOfDeath: "",
+      placeOfDeath: ""
     }
+  }
+
+  sendEventDetails = () => {
+    //this.props.eventDetails(this.state.dateOfBirth, this.state.father, this.state.mother, this.state.placeOfBirth, this.state.dateOfDeath, this.state.placeOfDeath)
+    //console.log(this.state);
+    this.props.eventDetails(this.state);
   }
   getBirthDetails = (dob, father, mother, pob) => {
     this.setState({
@@ -24,9 +33,9 @@ export default class Events extends Component {
       father: father,
       mother: mother,
       placeOfBirth: pob
-
     })
     //console.log("Birth details at Add Member ", this.state.dateOfBirth, this.state.father, this.state.mother, this.state.placeOfBirth )
+    this.sendEventDetails();
   }
 
   getDeathDetails = (dod, pod) => {
@@ -34,8 +43,11 @@ export default class Events extends Component {
       dateOfDeath: dod,
       placeOfDeath: pod
     })
-    console.log("Death details at Add Member ", this.state.dateOfDeath, this.state.placeOfDeath);
+    //console.log("Death details at Add Member ", this.state.dateOfDeath, this.state.placeOfDeath);
+    this.sendEventDetails();
   }
+
+  
   render(){
     return(
       <div>
