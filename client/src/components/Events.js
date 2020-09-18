@@ -33,18 +33,20 @@ export default class Events extends Component {
       father: father,
       mother: mother,
       placeOfBirth: pob
-    })
+    },
+      this.sendEventDetails
+    );
     //console.log("Birth details at Add Member ", this.state.dateOfBirth, this.state.father, this.state.mother, this.state.placeOfBirth )
-    this.sendEventDetails();
+    //this.sendEventDetails();
   }
 
   getDeathDetails = (dod, pod) => {
     this.setState({
       dateOfDeath: dod,
       placeOfDeath: pod
-    })
-    //console.log("Death details at Add Member ", this.state.dateOfDeath, this.state.placeOfDeath);
-    this.sendEventDetails();
+    },
+      this.sendEventDetails
+    );
   }
 
   

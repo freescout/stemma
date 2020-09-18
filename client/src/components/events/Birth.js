@@ -24,29 +24,34 @@ export default class Birth extends Component {
   onChangeDateOfBirth(e) {
     this.setState({
       dateOfBirth: e.target.value
-    })
-    //console.log("Birthdate", this.state.dateOfBirth);
+    },
+      this.sendBirthDetails
+    );
   }
 
   onChangeFather(e) {
     this.setState({
       father: e.target.value
-    });
-    this.sendBirthDetails();
+    },
+      this.sendBirthDetails
+    );
+    
   }
 
   onChangeMother(e) {
     this.setState({
       mother: e.target.value
-    });
-    this.sendBirthDetails();
+    },
+      this.sendBirthDetails
+    );
   }
 
   onChangePlaceOfBirth(e) {
     this.setState({
       placeOfBirth: e.target.value
-    });
-    this.sendBirthDetails();
+    },
+      this.sendBirthDetails
+    );
   }
 
   render() {

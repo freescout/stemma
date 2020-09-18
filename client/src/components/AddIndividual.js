@@ -43,7 +43,6 @@ export default class AddMember extends Component {
 
   newMember() {
     this.setState({
-      id: "",
       firstName: '',
       middleName: '',
       lastName:'',
@@ -58,15 +57,15 @@ export default class AddMember extends Component {
     })
   }
 
-  getBasicDetails = (fname, mname, lname, nname, gender) => {
-    this.setState({
-      firstName: fname,
-      middleName: mname,
-      lastName: lname,
-      nickName: nname,
-      gender
-    })
-    //console.log("General Details at Add Individual", this.state.firstName, this.state.middleName, this.state.lastName, this.state.nickName, this.state.gender);
+  getBasicDetails = (...props) => {
+    console.log("props from getbasicdetails", props)
+     this.setState({
+      firstName: props[0].firstName,
+      middleName: props[0].middleName,
+      lastName: props[0].lastName,
+      nickName: props[0].nickName,
+      gender: props[0].gender
+    }) 
   }
 
   getEventDetails = (...props) => {
@@ -88,7 +87,6 @@ export default class AddMember extends Component {
       fileData.append('file', this.state.selectedFile);
     }
     var data = {
-      id: this.state.id,
       firstName: this.state.firstName,
       middleName: this.state.middleName,
       lastName: this.state.lastName,

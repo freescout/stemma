@@ -17,6 +17,7 @@ exports.create = (req, res) => {
 
 // Create a member
   const individual = new Individual({
+    id: req.body.id,
     name: {
       firstName: req.body.firstName,
       middleName: req.body.middleName,
@@ -27,6 +28,10 @@ exports.create = (req, res) => {
 
   })
 
+/*   const places = new Places({
+    addr: req.body.placeOfBirth
+  }); */
+//console.log("Printing member", member);
 
 // Save Member in the database
   individual
@@ -52,10 +57,20 @@ exports.create = (req, res) => {
         ]
       })
 
-       events.save(function (err, doc) {
-         if (err) return console.error(err);
-         console.log("Event inserted succussfully!");
-       });
+       events
+         .save(events)
+         .then(eventdata => {
+           console.log("Printing events", events); 
+           console.log("At events", eventdata);
+           res.send(eventdata);
+         })
+         .catch(err => {
+           res.status(500).send({
+             message:
+               err.message || "Some error occured while creating events"
+           });
+         }); 
+       //console.log("Printing events", events); 
 
     }) 
     .catch(err => {

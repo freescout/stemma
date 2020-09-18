@@ -21,34 +21,41 @@ export default class IndividualBasicDetails extends Component {
     }
   }
 
-  sendGeneralDetails = () => {
-    console.log("General Details at General Detials", this.state.firstName, this.state.middleName, this.state.lastName, this.state.nickName, this.state.gender);
-    this.props.basicDetails(this.state.firstName, this.state.middleName, this.state.lastName, this.state.nickName, this.state.gender);
+  sendBasicDetails = () => {
+    console.log("General Details at General Detials", this.state);
+    this.props.basicDetails(this.state);
   }
 
   onChangeFirstName(e) {
     this.setState({
       firstName: e.target.value
-    });
+    },
+      this.sendBasicDetails
+    );
   }
 
   onChangeMiddleName(e) {
     this.setState({
       middleName: e.target.value
-    });
+    },
+      this.sendBasicDetails
+    );
   }
 
   onChangeLastName(e) {
     this.setState({
       lastName: e.target.value
-    });
+    },
+      this.sendBasicDetails
+    );
   }
 
   onChangeNickName(e) {
     this.setState({
       nickName: e.target.value
-    });
-    this.sendGeneralDetails();
+    },
+      this.sendBasicDetails
+    );
   }
 
 
@@ -56,17 +63,18 @@ export default class IndividualBasicDetails extends Component {
     
     this.setState({
       gender: e.target.value
-    });
-    console.log("Gender Selected at basic", this.state.gender);
-    this.sendGeneralDetails();
+    },
+      this.sendBasicDetails
+    );
   }
 
   onChangeFileHandler(e) {
     console.log(e.target.files[0]);
     this.setState({
       selectedFile: e.target.files[0],
-
-    })
+    },
+      this.sendBasicDetails
+    );
   }
   render() {
     return (
