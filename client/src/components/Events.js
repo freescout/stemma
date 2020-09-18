@@ -12,7 +12,6 @@ export default class Events extends Component {
     this.sendEventDetails = this.sendEventDetails.bind(this);
 
     this.state = {
-
       dateOfBirth: "",
       father: "",
       mother: "",
@@ -40,10 +39,10 @@ export default class Events extends Component {
     //this.sendEventDetails();
   }
 
-  getDeathDetails = (dod, pod) => {
+  getDeathDetails = (...props) => {
     this.setState({
-      dateOfDeath: dod,
-      placeOfDeath: pod
+      dateOfDeath: props[0].dateOfDeath,
+      placeOfDeath: props[0].placeOfDeath
     },
       this.sendEventDetails
     );

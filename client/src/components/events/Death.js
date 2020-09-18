@@ -31,19 +31,22 @@ export default class Death extends Component {
   onChangeDateOfDeath(e) {
     this.setState({
       dateOfDeath: e.target.value
-    })
-    console.log("DeathDate", this.state.dateOfDeath);
+    },
+      this.sendDeathDetails
+    );
   }
 
   onChangePlaceOfDeath(e) {
     this.setState({
       placeOfDeath: e.target.value
-    });
-    this.sendDeathDetails();
+    },
+      this.sendDeathDetails
+    );
+    
   }
 
   sendDeathDetails =() =>  {
-    this.props.deathDetails(this.state.dateOfDeath, this.state.placeOfDeath);
+    this.props.deathDetails(this.state);
   }
 
 

@@ -54,10 +54,17 @@ exports.create = (req, res) => {
             }
             ]
           }
-        ]
+        ],
+         death: [
+          {
+            individual: data._id,
+            date: req.body.dateOfDeath,
+            place: req.body.placeOfDeath
+          }
+        ] 
       })
-
-       events
+/* 
+        events
          .save(events)
          .then(eventdata => {
            console.log("Printing events", events); 
@@ -65,12 +72,18 @@ exports.create = (req, res) => {
            res.send(eventdata);
          })
          .catch(err => {
+           console.log("Error at Events", err);
            res.status(500).send({
              message:
                err.message || "Some error occured while creating events"
-           });
-         }); 
-       //console.log("Printing events", events); 
+           }); 
+
+         });  */
+       //console.log("Printing events", events);  
+        events.save(function (err, doc) {
+         if (err) return console.error(err);
+         console.log("Document inserted succussfully!");
+       }); 
 
     }) 
     .catch(err => {

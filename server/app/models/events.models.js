@@ -15,6 +15,13 @@ module.exports = mongoose => {
             }
           ]
         }
+      ],
+      death: [
+        {
+          individual: String,
+          date: Date,
+          place: String          
+        }
       ]
     }
   ));
