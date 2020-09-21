@@ -63,7 +63,7 @@ exports.create = (req, res) => {
           }
         ] 
       })
-/* 
+ 
         events
          .save(events)
          .then(eventdata => {
@@ -78,12 +78,12 @@ exports.create = (req, res) => {
                err.message || "Some error occured while creating events"
            }); 
 
-         });  */
+         });  
        //console.log("Printing events", events);  
-        events.save(function (err, doc) {
+/*         events.save(function (err, doc) {
          if (err) return console.error(err);
          console.log("Document inserted succussfully!");
-       }); 
+       });  */
 
     }) 
     .catch(err => {
