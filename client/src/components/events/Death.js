@@ -45,7 +45,7 @@ export default class Death extends Component {
     
   }
 
-  sendDeathDetails =() =>  {
+  sendDeathDetails = () =>  {
     this.props.deathDetails(this.state);
   }
 

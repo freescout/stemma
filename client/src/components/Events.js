@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Birth from './events/Birth';
 import Death from './events/Death';
+import Partnership from './events/Partnership';
 
 export default class Events extends Component {
   constructor(props) {
@@ -17,13 +18,12 @@ export default class Events extends Component {
       mother: "",
       placeOfBirth: "",
       dateOfDeath: "",
-      placeOfDeath: ""
+      placeOfDeath: "",
+      partners: [],
     }
   }
 
   sendEventDetails = () => {
-    //this.props.eventDetails(this.state.dateOfBirth, this.state.father, this.state.mother, this.state.placeOfBirth, this.state.dateOfDeath, this.state.placeOfDeath)
-    //console.log(this.state);
     this.props.eventDetails(this.state);
   }
   getBirthDetails = (dob, father, mother, pob) => {
@@ -35,14 +35,21 @@ export default class Events extends Component {
     },
       this.sendEventDetails
     );
-    //console.log("Birth details at Add Member ", this.state.dateOfBirth, this.state.father, this.state.mother, this.state.placeOfBirth )
-    //this.sendEventDetails();
   }
 
   getDeathDetails = (...props) => {
     this.setState({
       dateOfDeath: props[0].dateOfDeath,
       placeOfDeath: props[0].placeOfDeath
+    },
+      this.sendEventDetails
+    );
+  }
+
+  getPartnershipDetails = (partners) => {
+    console.log("Reached getpartner at Events", partners);
+    this.setState({
+      partners: [...this.state.partners, partners]
     },
       this.sendEventDetails
     );
@@ -57,9 +64,9 @@ export default class Events extends Component {
           <h5 class="card-title">Events</h5>
             <Birth birthDetails={this.getBirthDetails} />
             <Death deathDetails={this.getDeathDetails} />
-
-      </div>
-    </div>
+            <Partnership partnershipDetails={this.getPartnershipDetails} />
+          </div>
+        </div>
       </div>
     )
   }

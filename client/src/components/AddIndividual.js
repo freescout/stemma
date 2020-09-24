@@ -8,7 +8,7 @@ import Events from './Events';
 import Contact from './Contact';
 
 
-const idConfig = require("../config/id.config");
+//const idConfig = require("../config/id.config");
 
 export default class AddMember extends Component {
   constructor(props) {
@@ -32,6 +32,10 @@ export default class AddMember extends Component {
       father: "",
       mother: "",
 
+      dateOfDeath: '',
+      placeOfDeath: '',
+
+      partners: [],
 
       selectedFile: null,
       submitted: false,
@@ -53,6 +57,9 @@ export default class AddMember extends Component {
       father: '',
       mother: '',
       placeOfBirth: '',
+      dateOfDeath: '',
+      placeOfDeath: '',
+      partners: [],
       submitted: false
     })
   }
@@ -74,6 +81,7 @@ export default class AddMember extends Component {
       placeOfBirth: props[0].placeOfBirth,
       father: props[0].father,
       mother: props[0].mother,
+      partners: props[0].partners
 
     })
 
@@ -96,7 +104,10 @@ export default class AddMember extends Component {
       dateOfBirth: this.state.dateOfBirth,
       father: this.state.father,
       mother: this.state.mother,
-      placeOfBirth: this.state.placeOfBirth
+      placeOfBirth: this.state.placeOfBirth,
+      dateOfDeath: this.state.dateOfDeath,
+      placeOfDeath: this.state.placeOfBirth,
+      partners: this.state.partners
     };
     console.log("Data at Add Indiv", data);
     MemberDataService.create(data)

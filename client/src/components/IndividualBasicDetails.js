@@ -93,7 +93,7 @@ export default class IndividualBasicDetails extends Component {
             <input type="text" id="nickName" class="form-control" placeholder="Nick Name" value={this.state.nickName} onChange={this.onChangeNickName} name='nickName' />
           </div>
         </div>
-        <div>
+        <div> Gender
           <div class="form-check form-check-inline">
             <label>
               <input
