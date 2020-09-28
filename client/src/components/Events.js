@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 
 import Birth from './events/Birth';
 import Death from './events/Death';
+import Wedding from './events/Wedding';
+import Divorce from './events/Divorce';
 import Partnership from './events/Partnership';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 export default class Events extends Component {
   constructor(props) {
@@ -11,6 +15,7 @@ export default class Events extends Component {
     this.getBirthDetails = this.getBirthDetails.bind(this);
     this.getDeathDetails = this.getDeathDetails.bind(this);
     this.sendEventDetails = this.sendEventDetails.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
 
     this.state = {
       dateOfBirth: "",
@@ -20,12 +25,21 @@ export default class Events extends Component {
       dateOfDeath: "",
       placeOfDeath: "",
       partners: [],
+      selected:""
     }
+  }
+
+  handleSelect = (e) => {
+    console.log("Drop dwon ", e);
+    this.setState({
+      selected: e
+    })
   }
 
   sendEventDetails = () => {
     this.props.eventDetails(this.state);
   }
+
   getBirthDetails = (dob, father, mother, pob) => {
     this.setState({
       dateOfBirth: dob,
@@ -64,10 +78,32 @@ export default class Events extends Component {
           <h5 class="card-title">Events</h5>
             <Birth birthDetails={this.getBirthDetails} />
             <Death deathDetails={this.getDeathDetails} />
-            <Partnership partnershipDetails={this.getPartnershipDetails} />
+            <DropdownButton
+              alignRight
+              title="Dropdown right"
+              id="dropdown-menu-align-right"
+              onSelect={this.handleSelect}
+            >
+              <Dropdown.Item eventKey="wedding">Wedding</Dropdown.Item>
+              <Dropdown.Item eventKey="divorce">Divorce</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item eventKey="other">Other</Dropdown.Item>
+            </DropdownButton>
+            {/* <Event choice={this.state.selected} /> */}
+             {this.state.selected === "wedding" ? (
+              <div>
+                <Wedding weddingDetails={this.getWeddingDetails} />
+              </div>
+            ) : (
+              <div>
+                <Divorce divorceDetails={this.getDivorceDetails}/>
+              </div>
+            )} 
+            
           </div>
         </div>
       </div>
     )
   }
 }
+
