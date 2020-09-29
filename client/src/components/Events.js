@@ -14,6 +14,7 @@ export default class Events extends Component {
 
     this.getBirthDetails = this.getBirthDetails.bind(this);
     this.getDeathDetails = this.getDeathDetails.bind(this);
+    this.getWeddingDetails = this.getWeddingDetails.bind(this);
     this.sendEventDetails = this.sendEventDetails.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
 
@@ -32,7 +33,6 @@ export default class Events extends Component {
   }
 
   handleSelect = (e) => {
-    console.log("Drop dwon ", e);
     this.setState({
       selected: e
     })
@@ -61,7 +61,7 @@ export default class Events extends Component {
       this.sendEventDetails
     );
   }
-
+/* 
   getPartnershipDetails = (partners) => {
     console.log("Reached getpartner at Events", partners);
     this.setState({
@@ -69,14 +69,16 @@ export default class Events extends Component {
     },
       this.sendEventDetails
     );
-  }
+  } */
 
   getWeddingDetails = (...props) => {
     this.setState({
       dateOfMarriage: props[0].date,
       placeOfMarriage: props[0].place,
       partner: props[0].partner
-    })
+    },
+      this.sendEventDetails
+    );
   }
 
   

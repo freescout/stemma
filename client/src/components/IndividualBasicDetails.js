@@ -22,7 +22,6 @@ export default class IndividualBasicDetails extends Component {
   }
 
   sendBasicDetails = () => {
-    console.log("General Details at General Detials", this.state);
     this.props.basicDetails(this.state);
   }
 

@@ -69,7 +69,6 @@ export default class AddIndividual extends Component {
   }
 
   getBasicDetails = (...props) => {
-    console.log("props from getbasicdetails", props)
     this.setState({
       firstName: props[0].firstName,
       middleName: props[0].middleName,
@@ -95,7 +94,6 @@ export default class AddIndividual extends Component {
 
   saveMember() {
     var fileData = null;
-    console.log("reached save member")
     if (this.state.selectedFile != null) {
       fileData = new FormData();
       fileData.append('file', this.state.selectedFile);
@@ -110,10 +108,13 @@ export default class AddIndividual extends Component {
       dateOfBirth: this.state.dateOfBirth,
       father: this.state.father,
       mother: this.state.mother,
+      dateOfBirth: this.state.dateOfBirth,
       placeOfBirth: this.state.placeOfBirth,
       dateOfDeath: this.state.dateOfDeath,
-      placeOfDeath: this.state.placeOfBirth,
-      partners: this.state.partners
+      placeOfDeath: this.state.placeOfDeath,
+      dateOfMarriage: this.state.dateOfMarriage,
+      partner: this.state.partner,
+      placeOfMarriage: this.state.placeOfMarriage
     };
     console.log("Data at Add Indiv", data);
     MemberDataService.create(data)
