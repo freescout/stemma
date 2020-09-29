@@ -61,7 +61,18 @@ exports.create = (req, res) => {
             date: req.body.dateOfDeath,
             place: req.body.placeOfDeath
           }
-        ] 
+        ],
+        partnerships: [
+          {
+             date: req.body.dateOfMarriage,
+            type: 'marriage',
+            place: req.body.placeOfMarriage,
+            individuals: [
+              { id: data._id, role: 'husband' },
+              { id: data._id, role: 'wife' }
+            ]  
+          }
+        ]   
       })
  
         events

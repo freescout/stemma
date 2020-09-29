@@ -10,7 +10,8 @@ module.exports = mongoose => {
       parents: [
         {
           id: { type: mongoose.Schema.Types.ObjectId, ref: 'Member'}, 
-          role: String }
+          role: String
+        }
       ]
     }
   )

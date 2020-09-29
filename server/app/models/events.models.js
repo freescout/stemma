@@ -22,6 +22,19 @@ module.exports = mongoose => {
           date: Date,
           place: String          
         }
+      ],
+      partnerships: [
+        {
+          type: { type: String, enum: ['marriage', 'living together', 'Other'], default: 'marriage' },
+          date: Date,         
+          place: String,
+          individuals: [
+            {
+              id: String,
+              role: String
+            }
+          ]  
+        }
       ]
     }
   ));
