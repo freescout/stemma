@@ -83,6 +83,26 @@ export default class Events extends Component {
 
   
   render(){
+
+    let otherEvents = null;
+
+    if (this.state.selected === "wedding") {
+      otherEvents = (
+        <Wedding weddingDetails={this.getWeddingDetails} />
+      )
+    }
+    else if (this.state.selected === "divorce") {
+      otherEvents = (
+        <Divorce divorceDetails={this.getDivorceDetails} />
+      )
+    }
+    else {
+      otherEvents = (
+        <div></div>
+      )
+ 
+    }
+
     return(
       <div>
         <div class='card'>
@@ -92,7 +112,7 @@ export default class Events extends Component {
             <Death deathDetails={this.getDeathDetails} />
             <DropdownButton
               alignRight
-              title="Dropdown right"
+              title="Other Events"
               id="dropdown-menu-align-right"
               onSelect={this.handleSelect}
             >
@@ -101,16 +121,7 @@ export default class Events extends Component {
               <Dropdown.Divider />
               <Dropdown.Item eventKey="other">Other</Dropdown.Item>
             </DropdownButton>
-            {/* <Event choice={this.state.selected} /> */}
-             {this.state.selected === "wedding" ? (
-              <div>
-                <Wedding weddingDetails={this.getWeddingDetails} />
-              </div>
-            ) : (
-              <div>
-                <Divorce divorceDetails={this.getDivorceDetails}/>
-              </div>
-            )} 
+            {otherEvents}
             
           </div>
         </div>

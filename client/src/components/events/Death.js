@@ -17,11 +17,7 @@ export default class Death extends Component {
   }
   onChangeAliveHandler(e) {
     //console.log("Is alive", e.target.value);
-    let alive = true;
-    if (this.state.isAlive)
-      alive = true;
-    else
-      alive = false;
+    const alive = this.state.isAlive;
     this.setState({
       isAlive: !alive
     });
