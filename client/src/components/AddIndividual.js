@@ -10,7 +10,7 @@ import Contact from './Contact';
 
 //const idConfig = require("../config/id.config");
 
-export default class AddMember extends Component {
+export default class AddIndividual extends Component {
   constructor(props) {
     super(props);
     this.newMember = this.newMember.bind(this);
@@ -35,7 +35,9 @@ export default class AddMember extends Component {
       dateOfDeath: '',
       placeOfDeath: '',
 
-      partners: [],
+      dateOfMarriage: "",
+      partner: "",
+      placeOfMarriage: "",
 
       selectedFile: null,
       submitted: false,
@@ -59,7 +61,9 @@ export default class AddMember extends Component {
       placeOfBirth: '',
       dateOfDeath: '',
       placeOfDeath: '',
-      partners: [],
+      dateOfMarriage: "",
+      partner: "",
+      placeOfMarriage: "",
       submitted: false
     })
   }
@@ -81,7 +85,9 @@ export default class AddMember extends Component {
       placeOfBirth: props[0].placeOfBirth,
       father: props[0].father,
       mother: props[0].mother,
-      partners: props[0].partners
+      dateOfMarriage: props[0].dateOfMarriage,
+      partner: props[0].partner,
+      placeOfMarriage: props[0].placeOfMarriage,
 
     })
 

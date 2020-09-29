@@ -24,7 +24,9 @@ export default class Events extends Component {
       placeOfBirth: "",
       dateOfDeath: "",
       placeOfDeath: "",
-      partners: [],
+      dateOfMarriage: "",
+      partner: "",
+      placeOfMarriage: "",
       selected:""
     }
   }
@@ -67,6 +69,14 @@ export default class Events extends Component {
     },
       this.sendEventDetails
     );
+  }
+
+  getWeddingDetails = (...props) => {
+    this.setState({
+      dateOfMarriage: props[0].date,
+      placeOfMarriage: props[0].place,
+      partner: props[0].partner
+    })
   }
 
   

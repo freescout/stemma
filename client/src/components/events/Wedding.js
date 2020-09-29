@@ -12,29 +12,35 @@ export default class Wedding extends Component {
     this.state = {
       date: "",
       partner: "",
-      placeWedding: ""
+      place: ""
     }
   }
 
   onChangeDate = (e) => {
     this.setState({
       date: e.target.value
-    })
+    },
+      this.sendWeddingDetails
+    );
   }
 
   onChangePartner = (e) => {
     this.setState({
       partner: e.target.value
-    })
+    },
+      this.sendWeddingDetails
+    );
   }
 
   onChangePlace = (e) => {
     this.setState({
-      placeWedding: e.target.value
-    })
+      place: e.target.value
+    },
+      this.sendWeddingDetails
+    );
   }
 
-  sendWeddingDetails = (e) => {
+  sendWeddingDetails = () => {
     this.props.weddingDetails(this.state);
   }
 
@@ -51,7 +57,7 @@ export default class Wedding extends Component {
               <input  type="date" value={this.state.date} id="date" placeholder="Date" onChange={this.onChangeDate} />
             </div>
             <div class="col">
-              <input type="text" id="place" placeholder="Place" value={this.state.placeWedding} onChange={this.onChangePlace} name='place' />
+              <input type="text" id="place" placeholder="Place" value={this.state.place} onChange={this.onChangePlace} name='place' />
             </div>
           </div>
         </div>
