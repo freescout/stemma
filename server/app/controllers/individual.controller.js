@@ -103,13 +103,7 @@ exports.create = (req, res) => {
         err.message || "Some error occured while creating the member"
       });
       return;
-    });
-  
-
-
-    
-
-  
+    }); 
     
 };
 
@@ -120,18 +114,19 @@ exports.findAll = (req, res) => {
 
   const firstName = req.query.firstName;
   const lastName = req.query.lastName;
-  console.log(firstName);
-  console.log(lastName);
+  console.log("First Name", firstName);
+  console.log("Last name", lastName);
 
   // result: { $and: [ { $gt: [ "$qty", 100 ] }, { $lt: [ "$qty", 250 ] } ] }
 
   //var condition = (firstName || lastName) ? { "name.lastName": { $regex: new RegExp(lastName), $options: "i" } } : {};
   var condition = (firstName || lastName) ? { $and: [{ "name.firstName": { $regex: new RegExp(firstName), $options: "i" } }, { "name.lastName": { $regex: new RegExp(lastName), $options: "i" } }] } : {};
 
-  //console.log("condition", condition);
+ // console.log("condition", condition);
 
-  Member.find(condition)
+  Individual.find(condition)
     .then(data => {
+      console.log("data returned", data);
       res.send(data);
     })
     .catch(err => {

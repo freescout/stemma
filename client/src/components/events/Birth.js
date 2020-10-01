@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import MemberDataService from "../../services/member.service";
+import Members from "../Members";
 
 
 export default class Birth extends Component {
@@ -8,14 +10,38 @@ export default class Birth extends Component {
     this.onChangeMother = this.onChangeMother.bind(this);
     this.onChangeFather = this.onChangeFather.bind(this);
     this.onChangePlaceOfBirth = this.onChangePlaceOfBirth.bind(this);
+    this.getMemberId = this.getMemberId.bind(this);
+    this.searchName = this.searchName.bind(this);
+    
 
     this.state = {
       father: "",
       mother: "",
       placeOfBirth: "",
-      dateOfBirth: ""
+      dateOfBirth: "",
+      members:[]
     }
   }
+
+
+ 
+  searchName = (name) => {
+    console.log("Membres", this.state.members.length);
+      console.log("Searchname calling", name, "");
+      MemberDataService.findByName(name, "")
+        .then(response => {
+          this.setState({
+            members: response.data
+          });
+          console.log("Printing response searchName");
+          console.log(response.data);
+          console.log("Members", this.state.members);
+
+        })
+        .catch(e => {
+          console.log(e);
+        })
+    }
 
   sendBirthDetails = () => {
     this.props.birthDetails(this.state.dateOfBirth, this.state.father, this.state.mother, this.state.placeOfBirth);
@@ -30,6 +56,8 @@ export default class Birth extends Component {
   }
 
   onChangeFather(e) {
+    this.searchName(e.target.value);
+
     this.setState({
       father: e.target.value
     },
@@ -39,6 +67,7 @@ export default class Birth extends Component {
   }
 
   onChangeMother(e) {
+    //this.searchName(e.target.value);
     this.setState({
       mother: e.target.value
     },
@@ -52,6 +81,12 @@ export default class Birth extends Component {
     },
       this.sendBirthDetails
     );
+  }
+
+  getMemberId = (id) => {
+    this.setState ({
+      father: id
+    })
   }
 
   render() {
@@ -72,6 +107,10 @@ export default class Birth extends Component {
               <input type="text" id="placeOfBirth" class="form-control" required placeholder="Place Of Birth" value={this.state.placeOfBirth} onChange={this.onChangePlaceOfBirth} name='placeOfBirth' />
             </div>
           </div>
+
+          {this.state.members ? (
+            <Members getMember={this.getMemberId} members={this.state.members} open={true}/>
+          ) : null}
 
       </div>
     )
