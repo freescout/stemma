@@ -3,12 +3,14 @@ module.exports = mongoose => {
     'individuals',
     mongoose.Schema(
     {
-        name: [{
-          "nameType": String,
-          "value": String
-        }],
+      name: {
+        firstName: String,
+        middleName: String,
+        lastName: String,
+        nickName: String,
+      },
       gender: { type: String, required: true, enum: ['male', 'female', 'other'], default: 'other' },
-      birth: {
+/*       birth: {
         date: Date,
         place: String,
         parents: [
@@ -27,7 +29,7 @@ module.exports = mongoose => {
             id: String
           }
         ]
-      },
+      }, */
 
     }
   ));
