@@ -11,9 +11,9 @@ exports.create = (req, res) => {
 
   // Create a new Individual
 
+  console.log("Creating new Individual", req);
 
   const individual = new Individual({
-    id: req.body.id,
     name: {
       firstName: req.body.firstName,
       middleName: req.body.middleName,
