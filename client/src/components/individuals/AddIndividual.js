@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 
-import IndividuaDatalService from '../../services/IndividualService';
+import IndividualDataService from '../../services/IndividualService';
 import BasicDetails from './BasicDetails';
 import Events from '../Events';
 import Contact from '../Contact';
@@ -17,7 +17,7 @@ const AddIndividual = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const addBasicDetailsHandler = (...props) => {
-    console.log(props);
+    //console.log(props);
     setIndividual({
       basicDetails: props[0]
     })
@@ -28,12 +28,16 @@ const AddIndividual = () => {
     })
   }
   const saveIndividual = () => {
-    var data = {
+    console.log("Basic Details at save", individual.basicDetails);
+/*      var data = {
       name: individual.name,
       gender: individual.gender
-    };
-
-    IndividuaDatalService.create(data)
+    };  */
+    var data = {
+      basicDetails: individual.basicDetails,
+    }; 
+    console.log("Data Details at save", data);
+    IndividualDataService.create(data)
       .then(response => {
         setIndividual({
           name: response.data.name,
