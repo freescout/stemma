@@ -4,12 +4,12 @@ import Tab from 'react-bootstrap/Tab';
 
 import IndividualDataService from '../../services/IndividualService';
 import BasicDetails from './BasicDetails';
-import Events from '../Events';
+import EventDetails from './EventDetails';
 import Contact from '../Contact';
 
 const AddIndividual = () => {
   const initialIndividualState = {
-   basicDetails: '',
+  // basicDetails: '',
    eventDetails: '',
    contactDetails: ''
   };
@@ -22,19 +22,21 @@ const AddIndividual = () => {
       basicDetails: props[0]
     })
   }
-  const getEventDetails = (...props) => {
+  const addEventDetailsHandler = (...props) => {
     setIndividual({
-
+      eventDetails: props[0]
     })
   }
   const saveIndividual = () => {
     console.log("Basic Details at save", individual.basicDetails);
+    console.log("Event Details at save", individual.eventDetails);
 /*      var data = {
       name: individual.name,
       gender: individual.gender
     };  */
     var data = {
       basicDetails: individual.basicDetails,
+      eventDetails: individual.eventDetails
     }; 
     console.log("Data Details at save", data);
     IndividualDataService.create(data)
@@ -73,7 +75,7 @@ const AddIndividual = () => {
                   <BasicDetails onAddBasicDetails={addBasicDetailsHandler} />
                 </Tab>
                 <Tab eventKey="events" title="Events">
-                  <Events eventDetails={getEventDetails} />
+                  <EventDetails onAddEventDetails={addEventDetailsHandler} />
                 </Tab>
                 <Tab eventKey="contact" title="Contact" >
                   <Contact />
