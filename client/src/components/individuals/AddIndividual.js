@@ -19,27 +19,26 @@ const AddIndividual = () => {
   const addBasicDetailsHandler = (...props) => {
     //console.log(props);
     setIndividual({
+      ...individual,
       basicDetails: props[0]
     })
   }
   const addEventDetailsHandler = (...props) => {
     setIndividual({
+      ...individual,
       eventDetails: props[0]
     })
   }
   const saveIndividual = () => {
     console.log("Basic Details at save", individual.basicDetails);
     console.log("Event Details at save", individual.eventDetails);
-/*      var data = {
-      name: individual.name,
-      gender: individual.gender
-    };  */
-    var data = {
+
+/*     var data = {
       basicDetails: individual.basicDetails,
       eventDetails: individual.eventDetails
-    }; 
-    console.log("Data Details at save", data);
-    IndividualDataService.create(data)
+    };  */
+    console.log("Data Details at save", individual);
+    IndividualDataService.create(individual)
       .then(response => {
         setIndividual({
           name: response.data.name,

@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 import Birth from './events/Birth';
 import Death from './events/Death';
 import Wedding from './events/Wedding';
 import Divorce from './events/Divorce';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 
-const EventDetails = React.memo(props => {
+
+const EventDetails = React.memo (props => {
 
   const [eventDetails, setEventDetails] = useState(null);
   const [selected, setSelected] = useState(null);
 
+  useEffect(() => {
+    props.onAddEventDetails(eventDetails)
+  }, [eventDetails]) //add the state in dependency array and this useEffect will run whenever state changes//
+
   const addBirthDetailsHandler = (...props) => {
-    //console.log(props);
+    console.log("at birth details handle in event handler",props);
     setEventDetails({
       birthDetails: props[0]
     })
