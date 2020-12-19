@@ -10,16 +10,16 @@ module.exports = mongoose => {
         nickName: String,
       },
       gender: { type: String, required: true, enum: ['male', 'female', 'other'], default: 'other' },
-/*       birth: {
+      birth: {
         date: Date,
         place: String,
-        parents: [
+         parents: [
           {
             id: String,
             role: String
           }
         ],
-        partnerships: [
+     /*   partnerships: [
           {
             ids:String
           }
@@ -28,8 +28,8 @@ module.exports = mongoose => {
           {
             id: String
           }
-        ]
-      }, */
+        ]*/
+      }, 
 
     }
   ));

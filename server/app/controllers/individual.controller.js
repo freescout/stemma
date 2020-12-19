@@ -11,16 +11,28 @@ exports.create = (req, res) => {
 
   // Create a new Individual
 
-  console.log("Creating new Individual", req);
+  console.log("Creating new Individual", req.body);
 
   const individual = new Individual({
     name: {
-      firstName: req.body.firstName,
-      middleName: req.body.middleName,
-      lastName: req.body.lastName,
-      nickName: req.body.nickName,
+      firstName: req.body.basicDetails.firstName,
+      middleName: req.body.basicDetails.middleName,
+      lastName: req.body.basicDetails.lastName,
+      nickName: req.body.basicDetails.nickName,
     },
-    gender: req.body.gender,
+    gender: req.body.basicDetails.gender,
+    birth: {
+      date: req.body.eventDetails.birthDetails.dateOfBirth,
+      place: req.body.eventDetails.birthDetails.placeOfBirth,
+      parents: [{
+        id: req.body.eventDetails.birthDetails.father,
+        role: 'father'
+      }, {
+        id: req.body.eventDetails.birthDetails.mother,
+        role: 'mother'
+      }
+      ]
+    }
 
   })
 

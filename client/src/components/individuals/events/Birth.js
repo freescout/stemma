@@ -28,7 +28,7 @@ const Birth = (props) => {
       <p class="card-text">Birth</p>
       <div class="form-group row">
         <div class="col">
-          <input class="form-control" type="date" value={birthDetails.dateOfBirth} id="dateofBirth" placeholder="Date of Birth" onChange={handleInputChange} />
+          <input class="form-control" type="date" value={birthDetails.dateOfBirth} id="dateOfBirth" placeholder="Date of Birth" onChange={handleInputChange} name='dateOfBirth'/>
         </div>
         <div class="col">
           <input type="text" id="father" class="form-control" required placeholder="Father" value={birthDetails.father} onChange={handleInputChange} name='father' />
