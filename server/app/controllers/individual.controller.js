@@ -32,7 +32,11 @@ exports.create = (req, res) => {
         role: 'mother'
       }
       ]
-    }
+    },
+    death: {
+      date: req.body.eventDetails.deathDetails.dateOfDeath,
+      place: req.body.eventDetails.deathDetails.placeOfDeath
+    },
 
   })
 

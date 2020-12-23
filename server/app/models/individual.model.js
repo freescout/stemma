@@ -19,18 +19,22 @@ module.exports = mongoose => {
             role: String
           }
         ],
-     /*   partnerships: [
-          {
-            ids:String
-          }
-        ],
-        children: [
-          {
-            id: String
-          }
-        ]*/
+   
       }, 
-
+      death: {
+        date: Date,
+        place: String
+      },
+      /*   partnerships: [
+                {
+                  ids:String
+                }
+              ],
+              children: [
+                {
+                  id: String
+                }
+              ]*/
     }
   ));
   return Individual;
