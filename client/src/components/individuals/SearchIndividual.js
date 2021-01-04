@@ -23,9 +23,7 @@ const SearchIndividual = (props) => {
     console.log("Searchname calling", searchDetails.firstName + searchDetails.lastName);
     IndividualDataService.findByName(searchDetails.firstName, searchDetails.lastName)
       .then(response => {
-        setIndividuals({
-        individuals: response.data
-      });
+        setIndividuals(response.data);
       console.log("Printing response searchName");
       console.log(response.data);
       console.log("indiv", individuals);
@@ -63,7 +61,9 @@ const SearchIndividual = (props) => {
       </button>
 </div>
       <h4>Select Partner from the  List</h4>
-      <ul className="list-group">
+      <div>{JSON.stringify(individuals)}</div>
+      <div>{console.log(JSON.stringify(individuals))}</div>
+       <ul className="list-group">
         {individuals &&
           individuals.map((individual, index) => (
 
@@ -75,7 +75,7 @@ const SearchIndividual = (props) => {
               {individual.name.firstName} {" "} {individual.name.lastName}
             </li>
           ))}
-      </ul> 
+      </ul>  
     </div>
   )
   console.log("Searchname calling", props.name);
