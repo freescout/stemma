@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 const Death = (props) => {
   const initialDeathDetails = {
     dateOfDeath: '',
-    placeOfDeath: '',
-    isAlive: true
+    placeOfDeath: ''
   };
   const [deathDetails, setDeathDetails] = useState(initialDeathDetails);
   useEffect(() => {

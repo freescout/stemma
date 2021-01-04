@@ -6,8 +6,7 @@ const Birth = (props) => {
     father: '',
     mother: '',
     placeOfBirth: '',
-    dateOfBirth: '',
-    members: []
+    dateOfBirth: ''
   };
 
   const [birthDetails, setBirthDetails] = useState(initialBirthDetails);
