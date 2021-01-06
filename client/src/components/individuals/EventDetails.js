@@ -24,8 +24,7 @@ const EventDetails = React.memo (props => {
   const addBirthDetailsHandler = (...props) => {
     console.log("at birth details handle in event handler",props);
     setEventDetails({
-      ...eventDetails,
-      birthDetails: props[0]
+      ...eventDetails,...props[0]
     });
 
   }
@@ -33,8 +32,7 @@ const EventDetails = React.memo (props => {
   const addDeathDetailsHandler = (...props) => {
     console.log("at death details handle in event handler", props);
     setEventDetails({
-      ...eventDetails,
-      deathDetails: props[0]
+      ...eventDetails,...props[0]
     });
   }
 

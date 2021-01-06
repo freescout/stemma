@@ -9,29 +9,28 @@ import Contact from '../Contact';
 
 const AddIndividual = () => {
   const initialIndividualState = {
-  // basicDetails: '',
+  basicDetails: '',
    eventDetails: '',
    contactDetails: ''
   };
-  const [individual, setIndividual] = useState(initialIndividualState);
+  const [individual, setIndividual] = useState(null);
   const [submitted, setSubmitted] = useState(false);
 
   const addBasicDetailsHandler = (...props) => {
-    //console.log(props);
-    setIndividual({
-      ...individual,
-      basicDetails: props[0]
-    })
+    console.log("Basic Details", props);
+    let newIndiv = {
+      ...individual,...props[0]
+    };
+    setIndividual(newIndiv);
   }
   const addEventDetailsHandler = (...props) => {
     setIndividual({
-      ...individual,
-      eventDetails: props[0]
+      ...individual, ...props[0]
     })
   }
   const saveIndividual = () => {
-    console.log("Basic Details at save", individual.basicDetails);
-    console.log("Event Details at save", individual.eventDetails);
+    console.log("Basic Details at save", individual);
+    console.log("Event Details at save", individual);
 
 /*     var data = {
       basicDetails: individual.basicDetails,
@@ -53,7 +52,7 @@ const AddIndividual = () => {
   };
 
   const newIndividual = () => {
-    setIndividual(initialIndividualState);
+    setIndividual(null);
     setSubmitted(false);
   };
 
