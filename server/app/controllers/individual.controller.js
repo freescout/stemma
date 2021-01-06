@@ -15,27 +15,27 @@ exports.create = (req, res) => {
 
   const individual = new Individual({
     name: {
-      firstName: req.body.basicDetails.firstName,
-      middleName: req.body.basicDetails.middleName,
-      lastName: req.body.basicDetails.lastName,
-      nickName: req.body.basicDetails.nickName,
+      firstName: req.body.firstName,
+      middleName: req.body.middleName,
+      lastName: req.body.lastName,
+      nickName: req.body.nickName,
     },
-    gender: req.body.basicDetails.gender,
+    gender: req.body.gender,
     birth: {
-      date: req.body.eventDetails.birthDetails.dateOfBirth,
-      place: req.body.eventDetails.birthDetails.placeOfBirth,
+      date: req.body.dateOfBirth, 
+      place: req.body.placeOfBirth,
       parents: [{
-        id: req.body.eventDetails.birthDetails.father,
+        id: req.body.father,
         role: 'father'
       }, {
-        id: req.body.eventDetails.birthDetails.mother,
+        id: req.body.mother,
         role: 'mother'
       }
       ]
     },
     death: {
-      date: req.body.eventDetails.deathDetails.dateOfDeath,
-      place: req.body.eventDetails.deathDetails.placeOfDeath
+      date: req.body.dateOfDeath,
+      place: req.body.placeOfDeath
     },
 
   })
