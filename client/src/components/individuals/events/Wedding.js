@@ -12,6 +12,8 @@ const Wedding = (props) => {
 
   const [weddingDetails, setWeddingDetails] = useState(initialWeddingDetails);
   const [isSearching, setSearching] = useState(false);
+  const [partner, setPartner] = useState('');
+  const [name, setName] = useState('');
 
   useEffect(() => {
     props.onAddWeddingDetails(weddingDetails)
@@ -29,13 +31,21 @@ const Wedding = (props) => {
 
   }
 
+  const getIndividualHandler = (...props) => {
+    //setWeddingDetails({ ...weddingDetails, partner: props[0]})
+    console.log("Partner Selected", props[0]);
+    setPartner(props[0]);
+    setName(props[0].name.firstName + " " + props[0].name.lastName);
+    setWeddingDetails({...weddingDetails, partner: partner});
+  }
+
   return (
     <div>
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Wedding</h5>
           <div class="col">
-            <input type="text" value={weddingDetails.partner} id="partner" placeholder="Enter Partner's name and search" onChange={handleInputChange} name='partner'/>
+            <input type="text" readOnly value={name} id="partner" placeholder="Enter Partner's name and search" onChange={handleInputChange} name='partner'/>
             <Search onClick={searchIndividual} />
           </div>
           <div class="col">
@@ -45,7 +55,7 @@ const Wedding = (props) => {
             <input type="text" id="placeOfWedding" value={weddingDetails.placeOfWedding} placeholder="Place of Wedding" onChange={handleInputChange} name='placeOfWedding' />
           </div>
           <div class="col">
-            {isSearching && <SearchIndividual name={weddingDetails.partner} />}
+            {isSearching && <SearchIndividual getIndividual={getIndividualHandler} />}
           </div>
         </div>
       </div>
