@@ -18,13 +18,17 @@ const Death = (props) => {
 
   return (
     <div>
-      <p class="card-text">Death</p>
-      <div class="form-group row">
-        <div class="col">
-          <input class="form-control" type="date" value={deathDetails.dateOfDeath} id="dateofDeath" placeholder="Date of Death" onChange={handleInputChange} name='dateOfDeath'/>
-        </div>
-        <div class="col">
-          <input type="text" id="placeOfDeath" class="form-control" placeholder="Place" value={deathDetails.placeOfDeath} onChange={handleInputChange} name='placeOfDeath' />
+      <div class='card'>
+        <div class='card-body'>
+          <h5 class='card-title'>Death</h5>
+          <div class="form-group row">
+            <div class="col">
+              <input class="form-control" type="date" value={deathDetails.dateOfDeath} id="dateofDeath" placeholder="Date of Death" onChange={handleInputChange} name='dateOfDeath' />
+            </div>
+            <div class="col">
+              <input type="text" id="placeOfDeath" class="form-control" placeholder="Place" value={deathDetails.placeOfDeath} onChange={handleInputChange} name='placeOfDeath' />
+            </div>
+          </div>
         </div>
       </div>
     </div>
