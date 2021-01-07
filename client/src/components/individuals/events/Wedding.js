@@ -31,7 +31,7 @@ const Wedding = (props) => {
 
   }
 
-  const getIndividualHandler = (...props) => {
+  const setSelectedIndividualHandler = (...props) => {
     //setWeddingDetails({ ...weddingDetails, partner: props[0]})
     console.log("Partner Selected", props[0]);
     setPartner(props[0]);
@@ -55,7 +55,7 @@ const Wedding = (props) => {
             <input type="text" id="placeOfWedding" value={weddingDetails.placeOfWedding} placeholder="Place of Wedding" onChange={handleInputChange} name='placeOfWedding' />
           </div>
           <div class="col">
-            {isSearching && <SearchIndividual getIndividual={getIndividualHandler} />}
+            {isSearching && <SearchIndividual setSelectedIndividual={setSelectedIndividualHandler} />}
           </div>
         </div>
       </div>
