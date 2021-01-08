@@ -4,9 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./App.css";
 
-import AddIndividual from "./components/AddIndividual";
-import Individual from "./components/individual.component";
-import IndividualsList from "./components/individuals-list.component";
+import AddIndividual from "../components/individuals/AddIndividual";
+import Individual from "../components/individual.component";
+import IndividualsList from "../components/individuals-list.component";
 
 class App extends Component {
   render() {

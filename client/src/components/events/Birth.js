@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MemberDataService from "../../services/member.service";
+import IndividualDataService from "../../services/individual.service";
 import Members from "../Members";
 
 
@@ -28,7 +28,7 @@ export default class Birth extends Component {
   searchName = (name) => {
     console.log("Membres", this.state.members.length);
       console.log("Searchname calling", name, "");
-      MemberDataService.findByName(name, "")
+    IndividualDataService.findByName(name, "")
         .then(response => {
           this.setState({
             members: response.data
@@ -108,10 +108,10 @@ export default class Birth extends Component {
             </div>
           </div>
 
-          {this.state.members ? (
+{/*           {this.state.members ? (
             <Members getMember={this.getMemberId} members={this.state.members} open={true}/>
           ) : null}
-
+ */}
       </div>
     )
   }

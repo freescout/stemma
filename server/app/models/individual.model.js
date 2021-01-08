@@ -1,21 +1,40 @@
 module.exports = mongoose => {
   const Individual = mongoose.model(
-    'individual',
+    'individuals',
     mongoose.Schema(
     {
       name: {
         firstName: String,
         middleName: String,
         lastName: String,
-        nickName: String        
+        nickName: String,
       },
       gender: { type: String, required: true, enum: ['male', 'female', 'other'], default: 'other' },
-/*        events: {
-         birth: { type: mongoose.Schema.Types.ObjectId, ref: 'birth' },
-        partnerships: [{ type: mongoose.Schema.Types.ObjectId, ref: 'partnership'}],
-        children: [{ type: mongoose.Schema.Types.ObjectId, ref: 'birth' }],
-        death: { type: mongoose.Schema.Types.ObjectId, ref: 'death'} 
-      }   */
+      birth: {
+        date: Date,
+        place: String,
+         parents: [
+          {
+            id: String,
+            role: String
+          }
+        ],
+   
+      }, 
+      death: {
+        date: Date,
+        place: String
+      },
+      /*   partnerships: [
+                {
+                  ids:String
+                }
+              ],
+              children: [
+                {
+                  id: String
+                }
+              ]*/
     }
   ));
   return Individual;

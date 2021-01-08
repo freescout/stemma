@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MemberDataService from "../services/member.service";
+import IndividualDataService from "../services/individual.service";
 import { Link } from "react-router-dom";
 
 export default class MembersList extends Component {
@@ -28,7 +28,7 @@ export default class MembersList extends Component {
     };
   }
   componentDidMount() {
-    this.retrieveMembers();
+    //this.retrieveMembers();
   }
 
   onChangeSearchFirstName(e) {
@@ -39,7 +39,7 @@ export default class MembersList extends Component {
   }
 
 /*   searchFirstName() {
-    MemberDataService.findByFirstName("Mathew")
+    IndividualDataService.findByFirstName("Mathew")
       .then(response => {
         this.setState({
           members: response.data
@@ -63,7 +63,7 @@ export default class MembersList extends Component {
 
   searchName() {
     console.log("Searchname calling", this.state.searchFirstName + this.state.searchLastName);
-    MemberDataService.findByName(this.state.searchFirstName,this.state.searchLastName)
+    IndividualDataService.findByName(this.state.searchFirstName,this.state.searchLastName)
       .then(response => {
         this.setState({
           members: response.data
@@ -85,7 +85,7 @@ export default class MembersList extends Component {
   }
 
   retrieveMembers() {
-    MemberDataService.getAll()
+    IndividualDataService.getAll()
       .then(response => {
         this.setState({
           members: response.data
@@ -98,7 +98,7 @@ export default class MembersList extends Component {
   }
 
   removeAllMembers() {
-    MemberDataService.deleteAll()
+    IndividualDataService.deleteAll()
       .then(response => {
         console.log(response.data);
         this.refreshList();

@@ -51,7 +51,7 @@ export default class Members extends Component {
                 {this.props.members.map((member) => {
                   console.log(member.name.firstName);
                   return (
-                    <li class="list-group-item" onClick={this.sendMember(member._id)}>{member.name.firstName} {member.name.lastName} ({member.name.nickName})</li>
+                    <li class="list-group-item" onClick={this.sendMember(member._id)} key={member._id}>{member.name.firstName} {member.name.lastName} ({member.name.nickName})</li>
                   )
                 })}
 
