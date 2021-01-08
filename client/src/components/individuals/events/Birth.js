@@ -15,7 +15,6 @@ const Birth = (props) => {
 
   const [birthDetails, setBirthDetails] = useState(initialBirthDetails);
   const [indivSearch, setIndivSearch] = useState(null);
-  //const [isMotherSearching, setMotherSearching] = useState(false);
   const [father, setFather] = useState('');
   const [mother, setMother] = useState('');
   const [fatherName, setFatherName] = useState('');
@@ -85,12 +84,7 @@ const Birth = (props) => {
               <input type="text" id="placeOfBirth" class="form-control" required placeholder="Place Of Birth" value={birthDetails.placeOfBirth} onChange={handleInputChange} name='placeOfBirth' />
             </div>
             <div class="col">
-             {/*  {(indivSearch || isMotherSearching) && <SearchIndividual setSelectedIndividual={setSelectedIndividualHandler} />} */}
-             {console.log(indivSearch)};
               {indivSearch  && <SearchIndividual setSelectedIndividual={setSelectedIndividualHandler} />}
-              
-              
-              
             </div>
           </div>
         </div>
